@@ -1,11 +1,12 @@
 package ddk
 
 import (
-	"github.com/dcsunny/pinduoduo-sdk/common"
-	"github.com/dcsunny/pinduoduo-sdk/util"
+	"github.com/xiangwork/pinduoduo-sdk/common"
+	"github.com/xiangwork/pinduoduo-sdk/util"
 )
 
-/**
+/*
+*
 增量查询推广订单信息（根据最后更新时间）
 */
 type OrderListIncrementGetParams struct {

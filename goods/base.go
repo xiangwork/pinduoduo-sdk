@@ -1,6 +1,6 @@
 package goods
 
-import "github.com/dcsunny/pinduoduo-sdk/common"
+import "github.com/xiangwork/pinduoduo-sdk/common"
 
 type Goods struct {
 	*common.Context

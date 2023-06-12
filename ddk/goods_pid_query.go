@@ -1,11 +1,12 @@
 package ddk
 
 import (
-	"github.com/dcsunny/pinduoduo-sdk/common"
-	"github.com/dcsunny/pinduoduo-sdk/util"
+	"github.com/xiangwork/pinduoduo-sdk/common"
+	"github.com/xiangwork/pinduoduo-sdk/util"
 )
 
-/**
+/*
+*
 查询已经生成的推广位信息
 */
 type GoodsPidQueryParams struct {

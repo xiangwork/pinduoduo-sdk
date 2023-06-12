@@ -7,8 +7,8 @@
     import (
     	"fmt"
     
-    	"github.com/dcsunny/pinduoduo-sdk/common"
-    	"github.com/dcsunny/pinduoduo-sdk/ddk"
+    	"github.com/xiangwork/pinduoduo-sdk/common"
+    	"github.com/xiangwork/pinduoduo-sdk/ddk"
     )
     
     func main() {

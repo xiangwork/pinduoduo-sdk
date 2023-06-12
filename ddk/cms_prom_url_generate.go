@@ -1,11 +1,12 @@
 package ddk
 
 import (
-	"github.com/dcsunny/pinduoduo-sdk/common"
-	"github.com/dcsunny/pinduoduo-sdk/util"
+	"github.com/xiangwork/pinduoduo-sdk/common"
+	"github.com/xiangwork/pinduoduo-sdk/util"
 )
 
-/**
+/*
+*
 生成商城推广链接接口
 */
 type CmsPromUrlGenerateParams struct {

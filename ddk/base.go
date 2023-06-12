@@ -1,6 +1,6 @@
 package ddk
 
-import "github.com/dcsunny/pinduoduo-sdk/common"
+import "github.com/xiangwork/pinduoduo-sdk/common"
 
 type DuoduoKe struct {
 	*common.Context

@@ -1,11 +1,12 @@
 package ddk
 
 import (
-	"github.com/dcsunny/pinduoduo-sdk/common"
-	"github.com/dcsunny/pinduoduo-sdk/util"
+	"github.com/xiangwork/pinduoduo-sdk/common"
+	"github.com/xiangwork/pinduoduo-sdk/util"
 )
 
-/**
+/*
+*
 多多客生成单品推广小程序二维码url
 */
 type WeappQrcodeUrlGenParams struct {

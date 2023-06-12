@@ -1,11 +1,12 @@
 package ddk
 
 import (
-	"github.com/dcsunny/pinduoduo-sdk/common"
-	"github.com/dcsunny/pinduoduo-sdk/util"
+	"github.com/xiangwork/pinduoduo-sdk/common"
+	"github.com/xiangwork/pinduoduo-sdk/util"
 )
 
-/**
+/*
+*
 生成多多进宝商品推广链接
 */
 type GoodsPromotionUrlGenerateParams struct {
