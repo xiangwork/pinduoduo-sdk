@@ -9,23 +9,23 @@ import (
 *
 增量查询推广订单信息（根据最后更新时间）
 */
-type OrderListIncrementGetParams struct {
-	StartUpdateTime int64 `json:"start_update_time"`          //最近90天内多多进宝商品订单更新时间--查询时间开始。note：此时间为时间戳，指格林威治时间 1970 年01 月 01 日 00 时 00 分 00 秒(北京时间 1970 年 01 月 01 日 08 时 00 分 00 秒)起至现在的总秒数
-	EndUpdateTime   int64 `json:"end_update_time"`            //最近90天内多多进宝商品订单更新时间--查询时间结束。note：此时间为时间戳，指格林威治时间 1970 年01 月 01 日 00 时 00 分 00 秒(北京时间 1970 年 01 月 01 日 08 时 00 分 00 秒)起至现在的总秒数
-	PageSize        *int  `json:"page_size,omitempty"`        //返回的每页结果订单数，默认为100，范围为10到100，建议使用40~50，可以提高成功率，减少超时数量。
-	Page            *int  `json:"page,omitempty"`             //第几页，从1到10000，默认1
-	QueryOrdertype  int   `json:"query_order_type,omitempty"` //第几页，从1到10000，默认1
+type OrderListRangeGetParams struct {
+	StartTime      string `json:"start_time"`                 //支付起始时间，格式: "yyyy-MM-dd HH:mm:ss" ，比如 "2020-12-01 00:00:00"
+	EndTime        string `json:"end_time"`                   //支付结束时间，格式: "yyyy-MM-dd HH:mm:ss" ，比如 "2020-12-01 00:00:00"
+	PageSize       *int   `json:"page_size,omitempty"`        //每次请求多少条，建议300
+	LastOrderId    string `json:"last_order_id,omitempty"`    //第几页，从1到10000，默认1
+	QueryOrdertype int    `json:"query_order_type,omitempty"` //订单类型：1-推广订单；2-直播间订单
 }
 
-type OrderListIncrementGetResult struct {
+type OrderListRangeGetResult struct {
 	OrderListGetResponse struct {
-		OrderList  []OrderListIncrementGetInfo `json:"order_list"`  //多多进宝推广位对象列表
-		TotalCount int                         `json:"total_count"` //请求到的结果数
+		OrderList   []OrderListRangeGetInfo `json:"order_list"`    //多多进宝推广位对象列表
+		LastOrderId string                  `json:"last_order_id"` //请求到的结果数
 	} `json:"order_list_get_response"`
 	common.CommonResult
 }
 
-type OrderListIncrementGetInfo struct {
+type OrderListRangeGetInfo struct {
 	OrderReceiveTime      int64  `json:"order_receive_time"`       //订单确认签收时间
 	CustomParameters      string `json:"custom_parameters"`        //自定义参数，标志订单来源于哪个自定义参数
 	Type                  int    `json:"type"`                     //订单来源：0-单品（领券页）推广，1-红包活动推广，2-领券页底部推荐，54-大转盘主页的商品，55-抽中免单的商品，56-大转盘抽中红包的商品，13-大转盘拉新锁佣的
@@ -48,11 +48,11 @@ type OrderListIncrementGetInfo struct {
 	OrderSn               string `json:"order_sn"`                 //推广订单编号
 }
 
-func (this *DuoduoKe) OrderListIncrementGet(p *OrderListIncrementGetParams) (*OrderListIncrementGetResult, error) {
-	apiType := `pdd.ddk.order.list.increment.get`
+func (d *DuoduoKe) OrderListRangeGet(p *OrderListRangeGetParams) (*OrderListRangeGetResult, error) {
+	apiType := `pdd.ddk.order.list.range.get`
 	params, paramsURL := util.FormatURLParams(p)
-	url := this.GetURL(apiType, "", params, paramsURL)
-	var result OrderListIncrementGetResult
+	url := d.GetURL(apiType, "", params, paramsURL)
+	var result OrderListRangeGetResult
 	err := util.HttpPOST(url, nil, &result)
 	if err != nil {
 		return nil, err
