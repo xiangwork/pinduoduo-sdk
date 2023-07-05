@@ -1,14 +1,12 @@
 package ddk
 
 import (
-	"os"
-
 	"github.com/xiangwork/pinduoduo-sdk/common"
 	"github.com/xiangwork/pinduoduo-sdk/util"
 )
 
 type ReportImgUploadParams struct {
-	File os.File `json:"file"`
+	File string `json:"file"`
 }
 
 type ReportImgUploadPostResult struct {
