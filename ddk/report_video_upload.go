@@ -21,7 +21,7 @@ type ReportVideoUploadPostResult struct {
 func (d *DuoduoKe) ReportVideoUploadPost(p *ReportVideoUploadParams) (*ReportVideoUploadPostResult, error) {
 	apiType := `pdd.ddk.report.video.upload`
 	params, paramsURL := util.FormatURLParams(p)
-	url := d.GetURL(apiType, "", params, paramsURL)
+	url := d.GetUploadURL(apiType, "", params, paramsURL)
 	var result ReportVideoUploadPostResult
 	err := util.HttpPOST(url, nil, &result)
 	if err != nil {
