@@ -30,3 +30,15 @@ func (this *Context) GetURL(apiType string, accessToken string, params map[strin
 	url = url + paramsURL
 	return url
 }
+
+func (d *Context) GetUploadURL(apiType string, accessToken string, params map[string]interface{}, paramsURL string) string {
+	timestamp := time.Now().Unix()
+	sign := util.Signature(apiType, d.ClientID, d.ClientSecret, accessToken, timestamp, params)
+
+	url := fmt.Sprintf(UploadURL, apiType, timestamp, d.ClientID, sign)
+	if accessToken != "" {
+		url = url + "&access_token=" + accessToken
+	}
+	url = url + paramsURL
+	return url
+}
